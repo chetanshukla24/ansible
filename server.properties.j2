@@ -1,4 +1,1 @@
-This is teplate file for kafka.
-{% for host in groups['kafka'] %}
-    {{hostvars[host]['ansible_ssh_host']}}
-{% endfor %
+main_nodes_ips: "{{ groups['kafka'] | map('extract', hostvars, ['ansible_eth0', 'ipv4', 'address']) | join(',') }}"
