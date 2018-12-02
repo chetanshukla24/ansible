@@ -1,0 +1,4 @@
+This is teplate file for kafka.
+{% for host in groups['kafka'] %}
+    {{hostvars[host]['ansible_ssh_host']}}
+{% endfor %

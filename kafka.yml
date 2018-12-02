@@ -1,0 +1,11 @@
+- hosts: all
+  tasks: 
+- name:  "copying template"
+  template:  
+  src: server.properties.j2
+  dest: /opt/ansible
+
+
+
+
+ 
