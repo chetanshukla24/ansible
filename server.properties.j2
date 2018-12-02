@@ -1,7 +1,8 @@
 {% for i in groups['kafka'] %}
-  {% if i == hostvars[inventory_hostname]['ansible_default_ipv4']['address'] %}
-  {{invent_hostname}} 
-  {% else %}
-  {{i}}    
-  {% endif %}
+{% set app_port_range = app_port_range + 1 %}
+{% if i == hostvars[inventory_hostname]['ansible_default_ipv4']['address'] %}
+server.{{loop.index}}={{invent_hostname}}:28{{app_port_range}}:38{{app_port_range}} 
+{% else %}
+server.{{loop.index}}={{i}}:28{{app_port_range}}:38{{app_port_range}}    
+{% endif %}
 {% endfor %}
