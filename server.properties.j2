@@ -1,4 +1,3 @@
-#main_nodes_ips: "{{ groups['kafka'] | map('extract', hostvars, ['inventory_hostname']) | join(',')}}"
 {% for i in groups['kafka'] %}
-IP{{ loop.index0 }}={{ hostvars[i]['inventory_hostname'] }}
+IP{{ loop.index0 }}={{ i }}
 {% endfor %}
