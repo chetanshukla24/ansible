@@ -1,3 +1,7 @@
 {% for i in groups['kafka'] %}
-IP{{ loop.index0 }}={{ i }}
+  {% if i == hostvars[inventory_hostname]['ansible_default_ipv4']['address'] %}
+  {{invent_hostname}} 
+  {% else %}
+  {{i}}    
+  {% endif %}
 {% endfor %}
