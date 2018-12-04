@@ -1,13 +1,9 @@
-- hosts: all
-  vars:
-    app_port_range: 87
-  tasks: 
-  - name:  "copying template"
-    template:  
-       src: server.properties.j2
-       dest: /opt/ansible/
+- hosts:  all
+  become: true
+  become_method: sudo
+  #environment:
+   # http_proxy: 
+    #https_proxy: 
 
-
-
-
- 
+  roles:
+    - kafka-demo
