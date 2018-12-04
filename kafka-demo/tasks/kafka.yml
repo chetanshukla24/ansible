@@ -1,13 +1,12 @@
 ---
-#- name: Configuring kafka 
- # hosts: kafka 
- # tasks: 
-  #- name: "Create kafka directory"
-  #  file:
-  #    path: /var/lib/kafka/myid
-  #    owner: root
- #     mode: 0755
-#    tags: kafka_config
+ 
+  - name: "Create kafka directory"
+    file:
+      path: /var/lib/kafka/myid
+      owner: root
+      state: touch
+      mode: 0755
+      tags: kafka_config
 
 
   - name: setting up kafka configuration
