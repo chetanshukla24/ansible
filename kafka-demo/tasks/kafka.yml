@@ -3,11 +3,12 @@
   - name: "Create kafka directory"
     file:
       path: /var/lib/kafka/
-      owner: root
       state: directory
+      owner: root
       mode: 0755
+      recurse: yes
       tags: kafka_config
-
+      when: "'kafka' in group_names"
 
   - name: setting up kafka configuration
     become: true
