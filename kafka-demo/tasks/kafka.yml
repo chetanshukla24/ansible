@@ -11,7 +11,6 @@
 
 
   - name: setting up kafka configuration
-    hosts: kafka
     become: true
     become_method: sudo 
     template:
@@ -24,3 +23,4 @@
     - { src: 'server.properties.j2',dest: '/etc/kafka/server.properties'}
     - { src: 'meta.properties.j2',dest: '/var/lib/kafka/meta.properties'}
     tags: kafka_config
+    when: "'kafka' in group_names"
