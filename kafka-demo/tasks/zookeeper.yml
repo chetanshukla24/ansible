@@ -1,6 +1,5 @@
 ---
   - name: "Create zookeeper directory"
-    hosts: zookeeper
     file:
       path: "{{item}}"
       owner: root
@@ -10,17 +9,18 @@
     - '/etc/kafka'
     - '/var/lib/zookeeper'
     tags: zookeeper_config
+    when: "'zookeeper' in group_names"
 
-  - name: "create id file"
-    hosts: zookeeper
+  - name: create  file
     file:
-      path: /var/lib/zookeeper/myid
+      path: "/var/lib/zookeeper/myid"
       owner: root
-      state: present
+      state: touch
     tags: zookeeper_config
+    when: "'zookeeper' in group_names"
+
 
   - name: "Zookeeper configuration"
-    hosts: zookeeper
     template:
      src:  "{{item.src}}"
      dest: "{{item.dest}}"
@@ -31,6 +31,7 @@
     - { src: 'zookeeper.properties.j2',dest: '/etc/kafka/zookeeper.properties'}
     - { src: 'myid.j2' ,dest: '/var/lib/zookeeper/myid'}
     tags: zookeeper_config
+    when: "'zookeeper' in group_names"
 
 
   
