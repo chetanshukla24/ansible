@@ -21,7 +21,7 @@ maxClientCnxns=0
 tickTime=2000
 initLimit=5
 syncLimit=2
-{% for i in groups['kafka'] %}
+{% for i in groups['zookeeper'] %}
 {% set app_port_range = app_port_range + 1 %}
 {% if i == hostvars[inventory_hostname]['ansible_default_ipv4']['address'] %}
 server.{{loop.index}}={{invent_hostname}}:28{{app_port_range}}:38{{app_port_range}} 
