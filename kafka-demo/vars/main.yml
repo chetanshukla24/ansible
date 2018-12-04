@@ -5,3 +5,4 @@ HTTP_PORT: 8080
 version: 2.11
 HOST_COUNT: "{{ groups['kafka'] | length }}"
 KAFKA_IP: "{{groups['kafka']|join(':2181,')}}:2181"
+app_port_range: 87
